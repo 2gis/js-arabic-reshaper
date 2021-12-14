@@ -1,24 +1,44 @@
 const assert = require('chai').assert;
 const reshape = require('../index.js').reshape;
 
+function showCodes(str) { 
+  const output = [];
+  for (let c of str) {
+    output.push(c, '('+c.charCodeAt(0).toString(16)+')');
+  }
+  return output.join(''); 
+}
+
+function failMsg (input, expected, output) {
+  return 'input=' +showCodes(input) + '; output=' + showCodes(output) + '; expected=' + showCodes(expected);
+}
+
 describe('test Latin alphabet and numerals', () => {
   it('does not change Latin alphabet', () => {
-    assert.equal(reshape('apple'), 'apple');
+    const input = 'apple';
+    const output = reshape(input);
+    assert.equal(output, input, failMsg(input, input, output));
   });
   it('does not change Latin numerals', () => {
-    assert.equal(reshape('123'), '123');
+    const input = '123';
+    const output = reshape(input);
+    assert.equal(output, input, failMsg(input, input, output));
   });
 });
 
 describe('tests Arabic words', () => {
   it('reshapes -apple-', () => {
-    assert.equal(reshape('تفاحة'),
-      'ﺗﻔﺎﺣﺔ');
+    const input = 'تفاحة';
+    const output = reshape(input);
+    const expected = 'ﺗﻔﺎﺣﺔ';
+    assert.equal(output, expected, failMsg(input, expected, output));
   });
 
   it('reshapes -Arabic alphabet-', () => {
-    assert.equal(reshape('الأبجدية'),
-      'ﺍﻷﲜﺪﻳﺔ');
+    const input = 'الأبجدية';
+    const output = reshape(input);
+    const expected = 'ﺍﻷﲜﺪﻳﺔ';
+    assert.equal(output, expected, failMsg(input, expected, output));
   });
   
   it('reshapes -Arabic alphabet- x 2', () => {
