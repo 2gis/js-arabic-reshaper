@@ -4,6 +4,7 @@
   "description": "Replace Arabic letters with their presentation forms for situations where there is no automatic text-shaping",
   "main": "index.js",
   "scripts": {
+    "gen": "node originals.js",
     "test": "mocha"
   },
   "repository": {
