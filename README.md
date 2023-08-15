@@ -5,7 +5,7 @@
 Интерфейс пакета представлен функцией 
 
 ```ts
-reshape(input: string): string
+reshape(input: string, options?: Options): string
 ```
 
 используется которая как-то так:
