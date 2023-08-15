@@ -42,14 +42,6 @@ function insertTrie(trie, key, payload) {
 
 const LIGATURES = [
     // Sentences
-    // Ligature BISMILLAH AR-RAHMAN AR-RAHEEM
-    {
-      matches: [
-        '\u0628\u0633\u0645\u0020',
-        '\u0627\u0644\u0644\u0647\u0020'
-      ],
-      forms: {isolated: '\uFDFD'}
-    },
     // Ligature JALLAJALALOUHOU
     {
       matches: ['\u062C\u0644\u0020\u062C\u0644\u0627\u0644\u0647'],
